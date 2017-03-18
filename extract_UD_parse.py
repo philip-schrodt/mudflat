@@ -1,15 +1,13 @@
 """
 extract_UD_parse.py
 
-Combines the country files which are in individual yearly directories into single files
-with the prefix all.*
+Utility for experimenting with extract various elements from a CoNLL-U parse. Uses the a subset of the
+en-ud-dev.conllu file from 
 
 TO RUN PROGRAM:
 
 python3 extract_UD_parse.py
 
-where the optional <filename> is the a list of files to read; the default is 'Textfiles.list'
-See comments below on the format of this
 
 PROGRAMMING NOTES: None
 
@@ -35,6 +33,19 @@ REVISION HISTORY:
 =========================================================================================================
 """
 
+def get_nsubj(subji):
+    subjstrg = subji[1]
+    for li in reversed(plist[:int(subji[0]) - 1]):
+#        print(li)
+        if li[6] == subji[0]:
+            subjstrg = li[1] + ' ' + subjstrg
+    for li in plist[int(subji[0]):]:
+#        print(li)
+        if li[6] == subji[0]:
+            subjstrg = subjstrg + ' ' + li[1]
+    return subjstrg       
+    
+    
 def print_info():
     if not thesent:
         return
@@ -44,9 +55,9 @@ def print_info():
             print("root:",li[1], "[" + li[0] + "]")
             iroot = li[0]
         if "nsubj" in li[7]:
-            print("nsubj:",li[1], "[" + li[0] + "]")
-        if "obj" in li[7]:
-            print("obj:",li[1], "[" + li[0] + "]")
+            print("nsubj:",li[1], "[" + li[0] + "] --> ", get_nsubj(li))
+        if li[7].startswith("ob"):
+            print("obj:",li[1], "(" + li[7] + ") [" + li[0] + "]")
     print()
     
 thesent = None
