@@ -36,6 +36,7 @@ REVISION HISTORY:
 import mf_reader
 import mf_globals
 import utilities
+import write_PLOVER
 
 import os
 import sys
@@ -70,16 +71,71 @@ def print_info():
             print("nsubj:",li[1], "[" + li[0] + "] --> ", get_nsubj(li))
         if li[7].startswith("ob"):
             print("obj:",li[1], "(" + li[7] + ") [" + li[0] + "]")
+        if li[7].startswith("dobj"):
+            print("dobj:",li[1], "(" + li[7] + ") [" + li[0] + "]")
     print()
     
-def print_plover():
+def code_actors():
+    src, srccode = "", ""
+    tar, tarcode = "", ""
+    roottext, tarcode = "", ""
+    
     if not thesent:
         return
 #    print(thesent)
     for li in plist:
+        if li[7] == "root":
+#            print("root:",li[1], "[" + li[0] + "]")
+            iroot = li[0]
+            if not roottext:
+                roottext = li[1].upper()
+        if "nsubj" in li[7]:
+#            print("nsubj:",li[1], "[" + li[0] + "] --> ", get_nsubj(li))
+            src = get_nsubj(li)
+        if li[7].startswith("ob"):
+            pass
+#            print("obj:",li[1], "(" + li[7] + ") [" + li[0] + "]")
+        if li[7].startswith("dobj"):
+#            print("dobj:",li[1], "(" + li[7] + ") [" + li[0] + "]")
+            tar = li[1]
+    if src:
+        src = src.upper()
+        srcwords = src.split(' ')
+        for wd in srcwords:
+#            print("checking",wd)
+            if wd in mf_globals.ActorDict:
+                try:
+                    srccode = mf_globals.ActorDict[wd]['#'][0][0]
+                except:
+                    pass
+                if srccode:
+                    print("Source code:",srccode)
+    if tar:
+        tar = tar.upper()
+        tarwords = tar.split(' ')
+        for wd in tarwords:
+            if wd in mf_globals.ActorDict:
+                try:
+                    tarcode = mf_globals.ActorDict[wd]['#'][0][0]
+                except:
+                    pass
+                if tarcode:
+                    print("Target code:",tarcode)
+                    
+    if srccode and tarcode:
+        return [roottext, src, srccode, tar, tarcode]
+    else:
+        return None
+
+def print_plover():
+    if not thesent:
+        return
+    print(thesent)
+    for li in plist:
         if li[7] == "root" and li[2].upper() in mf_globals.VerbDict['verbs']:
             print('"' + li[2].upper() + '"')
-            print_info()
+#            print_info()
+            return code_actors()
             break
         """if "nsubj" in li[7]:
             print("nsubj:",li[1], "[" + li[0] + "] --> ", get_nsubj(li))
@@ -148,19 +204,28 @@ fout.close()
 #mf_reader.show_verb_dictionary("verb.dict.txt")
 sys.exit()"""
 
-thesent = None
+thesent = ""
 #fin = open("evetn_text_subset1.txt",'r')
-fin = open("en-ud-dev.conllu.events.txt",'r')
+#fin = open("en-ud-dev.conllu.events.txt",'r')
+fin = open("conll_test_records_edited_3.txt",'r')
+fout = open("test_output.txt",'w')
 ka = 0
 line = fin.readline() 
 while len(line) > 0:  # loop through the file
     if line.startswith("# sent_id"):
 #        print_info()
-        print_plover()
+        codes = print_plover()
+        if codes:
+            print(codes)
+            plovrec = write_PLOVER.make_plover_record(
+                ["id-holder","date-holder",[codes[2],codes[1]], [codes[4],codes[3]], codes[0],"mode-holder", "context-holder"],
+                 thesent)
+            write_PLOVER.write_record(plovrec,fout)
+        thesent = ""
         ka += 1
-        if ka > 256: break
+        if ka > 4: break
     elif line.startswith("# text"):
-        thesent = line[9:-1]
+        thesent += line[9:-1] + ' '
     elif line.startswith("1"):
         plist = [line[:-1].split('\t')]
         line = fin.readline() 
@@ -170,4 +235,5 @@ while len(line) > 0:  # loop through the file
     line = fin.readline() 
 
 fin.close()
+fout.close()
 print("Finished")
