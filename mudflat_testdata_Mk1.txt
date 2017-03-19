@@ -1,0 +1,284 @@
+# sent_id = 3f8d8514-7cbd-423a-9cc8-37d8881add93_4
+# source = mudflat test data
+# date = 2015-02-18
+# text = Since October 2015, Israeli occupation forces have killed at least 252 Palestinians. 
+1	Since	since	_	IN	_	2	case	_	_
+2	October	October	_	NNP	_	9	nmod	_	_
+3	2015	2015	_	CD	_	2	nummod	_	_
+4	,	,	_	,	_	9	punct	_	_
+5	Israeli	israeli	_	JJ	_	7	amod	_	_
+6	occupation	occupation	_	NN	_	7	compound	_	_
+7	forces	force	_	NNS	_	9	nsubj	_	_
+8	have	have	_	VBP	_	9	aux	_	_
+9	killed	kill	_	VBN	_	0	root	_	_
+10	at	at	_	IN	_	11	case	_	_
+11	least	least	_	JJS	_	12	nmod:npmod	_	_
+12	252	252	_	CD	_	13	nummod	_	_
+13	Palestinians	Palestinians	_	NNPS	_	9	dobj	_	_
+14	.	.	_	.	_	9	punct	_	_
+
+# sent_id = 48a35691-04e1-49f0-854f-9722214aabd9_4
+# source = mudflat test data
+# date = 2015-03-07
+# text = Abdel-Fattah al-Sisi, a former head of military intelligence, Egypt's military had ousted President Mohammad Morsi and
+# text = his government following mass popular protests against his rule.
+1	Abdel-Fattah	Abdel-Fattah	_	NNP	_	2	compound	_	_
+2	al-Sisi	al-Sisi	_	NNP	_	15	nsubj	_	_
+3	,	,	_	,	_	2	punct	_	_
+4	a	a	_	DT	_	6	det	_	_
+5	former	former	_	JJ	_	6	amod	_	_
+6	head	head	_	NN	_	2	appos	_	_
+7	of	of	_	IN	_	9	case	_	_
+8	military	military	_	JJ	_	9	amod	_	_
+9	intelligence	intelligence	_	NN	_	6	nmod	_	_
+10	,	,	_	,	_	2	punct	_	_
+11	Egypt	Egypt	_	NNP	_	13	nmod:poss	_	_
+12	's	's	_	POS	_	11	case	_	_
+13	military	military	_	NN	_	15	nsubj	_	_
+14	had	have	_	VBD	_	15	aux	_	_
+15	ousted	oust	_	VBN	_	0	root	_	_
+16	President	President	_	NNP	_	18	compound	_	_
+17	Mohammad	Mohammad	_	NNP	_	18	compound	_	_
+18	Morsi	Morsi	_	NNP	_	15	dobj	_	_
+19	and	and	_	CC	_	18	cc	_	_
+20	his	he	_	PRP$	_	21	nmod:poss	_	_
+21	government	government	_	NN	_	18	conj	_	_
+22	following	follow	_	VBG	_	25	case	_	_
+23	mass	mass	_	NN	_	25	compound	_	_
+24	popular	popular	_	JJ	_	25	amod	_	_
+25	protests	protest	_	NNS	_	15	nmod	_	_
+26	against	against	_	IN	_	28	case	_	_
+27	his	he	_	PRP$	_	28	nmod:poss	_	_
+28	rule	rule	_	NN	_	25	nmod	_	_
+29	.	.	_	.	_	15	punct	_	_
+
+# sent_id = 4080dec6-21c2-4fb2-b991-3d552a083e73_1
+# source = mudflat test data
+# date = 2016-01-10
+# text = Palestinian President Mahmoud Abbas has criticised Israel for the "stagnating" peace process, during a three-day
+# text = visit to Lebanon.
+1	Palestinian	palestinian	_	JJ	_	4	amod	_	_
+2	President	President	_	NNP	_	4	compound	_	_
+3	Mahmoud	Mahmoud	_	NNP	_	4	compound	_	_
+4	Abbas	Abbas	_	NNP	_	6	nsubj	_	_
+5	has	have	_	VBZ	_	6	aux	_	_
+6	criticised	criticise	_	VBN	_	0	root	_	_
+7	Israel	Israel	_	NNP	_	6	dobj	_	_
+8	for	for	_	IN	_	14	case	_	_
+9	the	the	_	DT	_	14	det	_	_
+10	``	``	_	``	_	14	punct	_	_
+11	stagnating	stagnate	_	VBG	_	14	compound	_	_
+12	''	''	_	''	_	14	punct	_	_
+13	peace	peace	_	NN	_	14	compound	_	_
+14	process	process	_	NN	_	6	nmod	_	_
+15	,	,	_	,	_	6	punct	_	_
+16	during	during	_	IN	_	19	case	_	_
+17	a	a	_	DT	_	19	det	_	_
+18	three-day	three-day	_	JJ	_	19	amod	_	_
+19	visit	visit	_	NN	_	6	nmod	_	_
+20	to	to	_	TO	_	21	case	_	_
+21	Lebanon	Lebanon	_	NNP	_	19	nmod	_	_
+22	.	.	_	.	_	6	punct	_	_
+
+# sent_id = 3f36376d-9390-48c7-98c4-3d28c6ca8cd9_5
+# source = mudflat test data
+# date = 2016-09-25
+# text = Saudi Arabia has long accused Iraq of being too close to Shi'ite Iran, its main regional rival, and of encouraging
+# text = sectarian discrimination against Sunnis, a charge Baghdad denies.
+1	Saudi	Saudi	_	NNP	_	2	compound	_	_
+2	Arabia	Arabia	_	NNP	_	5	nsubj	_	_
+3	has	have	_	VBZ	_	5	aux	_	_
+4	long	long	_	RB	_	5	advmod	_	_
+5	accused	accuse	_	VBN	_	0	root	_	_
+6	Iraq	Iraq	_	NNP	_	5	dobj	_	_
+7	of	of	_	IN	_	10	mark	_	_
+8	being	be	_	VBG	_	10	cop	_	_
+9	too	too	_	RB	_	10	advmod	_	_
+10	close	close	_	JJ	_	5	advcl	_	_
+11	to	to	_	TO	_	12	mark	_	_
+12	Shi'ite	shi'ite	_	VB	_	10	xcomp	_	_
+13	Iran	Iran	_	NNP	_	12	dobj	_	_
+14	,	,	_	,	_	13	punct	_	_
+15	its	its	_	PRP$	_	18	nmod:poss	_	_
+16	main	main	_	JJ	_	18	amod	_	_
+17	regional	regional	_	JJ	_	18	amod	_	_
+18	rival	rival	_	NN	_	13	conj	_	_
+19	,	,	_	,	_	13	punct	_	_
+20	and	and	_	CC	_	13	cc	_	_
+21	of	of	_	IN	_	24	case	_	_
+22	encouraging	encouraging	_	JJ	_	24	amod	_	_
+23	sectarian	sectarian	_	JJ	_	24	amod	_	_
+24	discrimination	discrimination	_	NN	_	13	conj	_	_
+25	against	against	_	IN	_	26	case	_	_
+26	Sunnis	Sunnis	_	NNPS	_	24	nmod	_	_
+27	,	,	_	,	_	26	punct	_	_
+28	a	a	_	DT	_	29	det	_	_
+29	charge	charge	_	NN	_	26	appos	_	_
+30	Baghdad	Baghdad	_	NNP	_	31	nsubj	_	_
+31	denies	deny	_	VBZ	_	29	acl:relcl	_	_
+32	.	.	_	.	_	5	punct	_	_
+
+# sent_id = 3f8d8514-7cbd-423a-9cc8-37d8881add93_4
+# source = mudflat test data
+# date = 2015-02-18
+# text = Meanwhile, attacks by frustrated
+# text = and unarmed Palestinians have killed 41 Israelis, two Americans, a Jordanian, an Eritrean and a Sudanese.
+1	Meanwhile	meanwhile	_	RB	_	0	root	_	_
+2	,	,	_	,	_	1	punct	_	_
+3	attacks	attack	_	NNS	_	2	root	_	_
+4	by	by	_	IN	_	5	case	_	_
+5	frustrated	frustrated	_	JJ	_	3	nmod	_	_
+6	and	and	_	CC	_	5	cc	_	_
+7	unarmed	unarmed	_	JJ	_	8	amod	_	_
+8	Palestinians	Palestinians	_	NNPS	_	10	nsubj	_	_
+9	have	have	_	VBP	_	10	aux	_	_
+10	killed	kill	_	VBN	_	5	conj	_	_
+11	41	41	_	CD	_	12	nummod	_	_
+12	Israelis	Israelis	_	NNPS	_	10	dobj	_	_
+13	,	,	_	,	_	3	punct	_	_
+14	two	two	_	CD	_	15	nummod	_	_
+15	Americans	Americans	_	NNPS	_	13	root	_	_
+16	,	,	_	,	_	15	punct	_	_
+17	a	a	_	DT	_	18	det	_	_
+18	Jordanian	jordanian	_	JJ	_	15	appos	_	_
+19	,	,	_	,	_	18	punct	_	_
+20	an	a	_	DT	_	21	det	_	_
+21	Eritrean	eritrean	_	JJ	_	18	conj	_	_
+22	and	and	_	CC	_	18	cc	_	_
+23	a	a	_	DT	_	24	det	_	_
+24	Sudanese	sudanese	_	JJ	_	18	conj	_	_
+25	.	.	_	.	_	15	punct	_	_
+
+# sent_id = 3edf6378-032d-4267-8067-a649367d7664_1
+# source = mudflat test data
+# date = 2015-03-10
+# text = On Tuesday 7th March 2017, the Iraqi Prime Minister Haider Al-Abadi met with the President of Kurdistan Region, Massoud
+# text = Barzani.
+1	On	on	_	IN	_	4	case	_	_
+2	Tuesday	Tuesday	_	NNP	_	4	compound	_	_
+3	7th	7th	_	NNP	_	4	compound	_	_
+4	March	March	_	NNP	_	13	nmod	_	_
+5	2017	2017	_	CD	_	4	nummod	_	_
+6	,	,	_	,	_	13	punct	_	_
+7	the	the	_	DT	_	12	det	_	_
+8	Iraqi	iraqi	_	JJ	_	12	amod	_	_
+9	Prime	Prime	_	NNP	_	12	compound	_	_
+10	Minister	Minister	_	NNP	_	12	compound	_	_
+11	Haider	Haider	_	NNP	_	12	compound	_	_
+12	Al-Abadi	Al-Abadi	_	NNP	_	13	nsubj	_	_
+13	met	meet	_	VBD	_	0	root	_	_
+14	with	with	_	IN	_	16	case	_	_
+15	the	the	_	DT	_	16	det	_	_
+16	President	President	_	NNP	_	13	nmod	_	_
+17	of	of	_	IN	_	19	case	_	_
+18	Kurdistan	Kurdistan	_	NNP	_	19	compound	_	_
+19	Region	Region	_	NNP	_	16	nmod	_	_
+20	,	,	_	,	_	19	punct	_	_
+21	Massoud	Massoud	_	NNP	_	22	compound	_	_
+22	Barzani	Barzani	_	NNP	_	19	appos	_	_
+23	.	.	_	.	_	13	punct	_	_
+
+# sent_id = 3ee99b57-cc96-432f-a0fc-a1ae60739be0_5
+# source = mudflat test data
+# date = 2015-12-01
+# text = Nasr also met Lebanese investor Gehad Al Arab who works in real-estate investment.
+1	Nasr	Nasr	_	NNP	_	3	nsubj	_	_
+2	also	also	_	RB	_	3	advmod	_	_
+3	met	meet	_	VBD	_	0	root	_	_
+4	Lebanese	lebanese	_	JJ	_	8	amod	_	_
+5	investor	investor	_	NN	_	8	compound	_	_
+6	Gehad	Gehad	_	NNP	_	8	compound	_	_
+7	Al	Al	_	NNP	_	8	compound	_	_
+8	Arab	Arab	_	NNP	_	3	dobj	_	_
+9	who	who	_	WP	_	10	nsubj	_	_
+10	works	work	_	VBZ	_	8	acl:relcl	_	_
+11	in	in	_	IN	_	13	case	_	_
+12	real-estate	real-estate	_	NN	_	13	compound	_	_
+13	investment	investment	_	NN	_	10	nmod	_	_
+14	.	.	_	.	_	3	punct	_	_
+
+# sent_id = 3f36376d-9390-48c7-98c4-3d28c6ca8cd9_5
+# source = mudflat test data
+# date = 2016-09-25
+# text = Saudi Arabia has long accused Iraq of being too close to Shi'ite Iran, its main regional rival, and of encouraging
+# text = sectarian discrimination against Sunnis, a charge Baghdad denies.
+1	Saudi	Saudi	_	NNP	_	2	compound	_	_
+2	Arabia	Arabia	_	NNP	_	5	nsubj	_	_
+3	has	have	_	VBZ	_	5	aux	_	_
+4	long	long	_	RB	_	5	advmod	_	_
+5	accused	accuse	_	VBN	_	0	root	_	_
+6	Iraq	Iraq	_	NNP	_	5	dobj	_	_
+7	of	of	_	IN	_	10	mark	_	_
+8	being	be	_	VBG	_	10	cop	_	_
+9	too	too	_	RB	_	10	advmod	_	_
+10	close	close	_	JJ	_	5	advcl	_	_
+11	to	to	_	TO	_	12	mark	_	_
+12	Shi'ite	shi'ite	_	VB	_	10	xcomp	_	_
+13	Iran	Iran	_	NNP	_	12	dobj	_	_
+14	,	,	_	,	_	13	punct	_	_
+15	its	its	_	PRP$	_	18	nmod:poss	_	_
+16	main	main	_	JJ	_	18	amod	_	_
+17	regional	regional	_	JJ	_	18	amod	_	_
+18	rival	rival	_	NN	_	13	conj	_	_
+19	,	,	_	,	_	13	punct	_	_
+20	and	and	_	CC	_	13	cc	_	_
+21	of	of	_	IN	_	24	case	_	_
+22	encouraging	encouraging	_	JJ	_	24	amod	_	_
+23	sectarian	sectarian	_	JJ	_	24	amod	_	_
+24	discrimination	discrimination	_	NN	_	13	conj	_	_
+25	against	against	_	IN	_	26	case	_	_
+26	Sunnis	Sunnis	_	NNPS	_	24	nmod	_	_
+27	,	,	_	,	_	26	punct	_	_
+28	a	a	_	DT	_	29	det	_	_
+29	charge	charge	_	NN	_	26	appos	_	_
+30	Baghdad	Baghdad	_	NNP	_	31	nsubj	_	_
+31	denies	deny	_	VBZ	_	29	acl:relcl	_	_
+32	.	.	_	.	_	5	punct	_	_
+
+# sent_id = 3ec48a4c-f697-4cda-9fe9-f9413909eb77_4
+# source = mudflat test data
+# date = 2014-05-28
+# text = Heavily armed police and troops with trucks cordoned off an area around a major intersection in the northern Brussels
+# text = borough of Schaerbeek. Three blasts could be heard, which the local mayor Bernard Clerfayt said were controlled
+# text = explosions.
+1	Heavily	heavily	_	RB	_	8	advmod	_	_
+2	armed	armed	_	JJ	_	3	amod	_	_
+3	police	police	_	NN	_	8	nsubj	_	_
+4	and	and	_	CC	_	3	cc	_	_
+5	troops	troops	_	NNS	_	3	conj	_	_
+6	with	with	_	IN	_	7	case	_	_
+7	trucks	truck	_	NNS	_	3	nmod	_	_
+8	cordoned	cordon	_	VBD	_	0	root	_	_
+9	off	off	_	RP	_	8	compound:prt	_	_
+10	an	a	_	DT	_	11	det	_	_
+11	area	area	_	NN	_	8	dobj	_	_
+12	around	around	_	IN	_	15	case	_	_
+13	a	a	_	DT	_	15	det	_	_
+14	major	major	_	JJ	_	15	amod	_	_
+15	intersection	intersection	_	NN	_	8	nmod	_	_
+16	in	in	_	IN	_	20	case	_	_
+17	the	the	_	DT	_	20	det	_	_
+18	northern	northern	_	JJ	_	20	amod	_	_
+19	Brussels	Brussels	_	NNP	_	20	compound	_	_
+20	borough	borough	_	NN	_	15	nmod	_	_
+21	of	of	_	IN	_	22	case	_	_
+22	Schaerbeek	Schaerbeek	_	NNP	_	20	nmod	_	_
+23	.	.	_	.	_	8	punct	_	_
+1	Three	three	_	CD	_	2	nummod	_	_
+2	blasts	blast	_	NNS	_	5	nsubjpass	_	_
+3	could	could	_	MD	_	5	aux	_	_
+4	be	be	_	VB	_	5	auxpass	_	_
+5	heard	hear	_	VBN	_	0	root	_	_
+6	,	,	_	,	_	5	punct	_	_
+7	which	which	_	WDT	_	13	dobj	_	_
+8	the	the	_	DT	_	12	det	_	_
+9	local	local	_	JJ	_	12	amod	_	_
+10	mayor	mayor	_	NN	_	12	compound	_	_
+11	Bernard	Bernard	_	NNP	_	12	compound	_	_
+12	Clerfayt	Clerfayt	_	NNP	_	13	nsubj	_	_
+13	said	say	_	VBD	_	5	ccomp	_	_
+14	were	be	_	VBD	_	15	auxpass	_	_
+15	controlled	control	_	VBN	_	13	ccomp	_	_
+16	explosions	explosion	_	NNS	_	15	dobj	_	_
+17	.	.	_	.	_	5	punct	_	_
+
