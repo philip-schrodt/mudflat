@@ -207,7 +207,8 @@ sys.exit()"""
 thesent = ""
 #fin = open("evetn_text_subset1.txt",'r')
 #fin = open("en-ud-dev.conllu.events.txt",'r')
-fin = open("conll_test_records_edited_3.txt",'r')
+#fin = open("conll_test_records_edited_3.txt",'r')
+fin = open("mudflat_testdata_Mk1.txt",'r')
 fout = open("test_output.txt",'w')
 ka = 0
 line = fin.readline() 
