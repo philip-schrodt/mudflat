@@ -34,7 +34,7 @@ field_order = ["id", "date", "source","target", "event", "eventText", "mode", "c
                "language", "publication", "coder", "version", "dateCoded", "comment"]
 
 
-def write_record(data):
+def write_record(data, fout):
     """ writes data[key] in field order """
     fout.write('{\n')
     for field in field_order:
@@ -42,17 +42,17 @@ def write_record(data):
         fout.write("    \"" + field + "\": " + json.dumps(data[field], sort_keys=True) + ",\n")
     fout.write('},\n')
     
-def make_plover_record(datalist):
+def make_plover_record(datalist, thesent = "-- sentence text --"):
     data = {
         "id": datalist[0],
         "date": datalist[1],
-        "source": datalist[2],
-        "target": datalist[3],
+        "source": [{"code" :datalist[2][0],"actorText" :datalist[2][1]}],
+        "target": [{"code" :datalist[3][0],"actorText" :datalist[3][1]}],
         "event": datalist[4],
         "eventText": "--event text --",
         "mode": datalist[5],
         "context": datalist[6],
-        "text": "-- sentence text --",
+        "text": thesent,
         "textInfo":{},
         "language":"en", 
         "publication": "-- publication --", 
