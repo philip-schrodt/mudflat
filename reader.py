@@ -1968,7 +1968,7 @@ def read_agent_dictionary(agent_path):
     subdict = {}  # substitution set dictionary
 
     # note that this will be ignored if there are no errors
-    logger = logging.getLogger('petr_log')
+    logger = logging.getLogger('mf_log')
     logger.info("Reading " + globals.AgentFileName + "\n")
     open_FIN(agent_path, "agent")
 
@@ -2015,6 +2015,44 @@ def read_agent_dictionary(agent_path):
     close_FIN()
 
 # ==== Input format reading
+
+def open_input(input_file_name):
+    global fin
+    #fin = open("evetn_text_subset1.txt",'r')
+    #fin = open("en-ud-dev.conllu.events.txt",'r')
+    #fin = open("conll_test_records_edited_3.txt",'r')
+    fin = open(input_file_name,'r')
+
+def close_input():
+    fin.close()
+
+def read_conllu_record():
+    """ reads next record; return plist and plovrec """
+    line = fin.readline() 
+    while len(line) > 0 and not line.startswith("# sent_id"):
+        line = fin.readline() 
+    if len(line) == 0:
+        print("End of file")
+        return None, None
+    idstrg = line[12:-1]
+    thesent = ""
+    while len(line) > 1:
+        if line.startswith("# text"):
+            thesent += line[9:-1] + ' '
+        elif line.startswith("# source"):
+            publicatnstrg = line[11:-1]
+        elif line.startswith("# date"):
+            datestrg = line[9:-1]
+        elif line.startswith("1"):  # could intercept multiple sentences here
+            plist = [line[:-1].split('\t')]
+            line = fin.readline() 
+            while len(line) > 1:
+                plist.append(line[:-1].split('\t'))
+                line = fin.readline()
+            break 
+        line = fin.readline() 
+
+    return plist, utilities.get_plover_template(idstrg, datestrg, publicatnstrg, thesent)
 
 
 def read_xml_input(filepaths, parsed=False):

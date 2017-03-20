@@ -46,6 +46,8 @@ import types
 import logging
 import argparse
 
+DEFAULT_INPUT_NAME = "mudflat_testdata_Mk1.txt"
+DEFAULT_OUTPUT_NAME = "mf_test_output.txt"
 
 def read_dictionaries(validation=False):
     """ Modified from PETR-2 """
@@ -61,12 +63,14 @@ def read_dictionaries(validation=False):
         actor_path = utilities._get_data('data/dictionaries', actdict)
         reader.read_actor_dictionary(actor_path)
 
-    """print('Agent dictionary:', globals.AgentFileName)
+    print('Agent dictionary:', globals.AgentFileName)
     agent_path = utilities._get_data('data/dictionaries',
                                      globals.AgentFileName)
     reader.read_agent_dictionary(agent_path)
+#    print(globals.AgentDict)
+#    exit()
 
-    print('Discard dictionary:', globals.DiscardFileName)
+    """print('Discard dictionary:', globals.DiscardFileName)
     discard_path = utilities._get_data('data/dictionaries',
                                        globals.DiscardFileName)
     reader.read_discard_list(discard_path)
@@ -79,6 +83,23 @@ def read_dictionaries(validation=False):
 
 utilities.init_logger('mudflat.log')
 logger = logging.getLogger('mf_log')
+
+cli_args = utilities.parse_cli_args()
+if cli_args.input:
+    input_file_name = cli_args.input
+else:
+    input_file_name = DEFAULT_INPUT_NAME
+
+if cli_args.output:
+    output_file_name = cli_args.output
+else:
+    output_file_name = DEFAULT_OUTPUT_NAME
+
+if cli_args.maxrecords:
+    maxrec = int(cli_args.maxrecords)
+else:
+    maxrec = 0
+
 
 config = False
 if config:
@@ -93,40 +114,21 @@ else:
                                                     'mudflat_config.ini'))
 read_dictionaries()
 
-#fin = open("evetn_text_subset1.txt",'r')
-#fin = open("en-ud-dev.conllu.events.txt",'r')
-#fin = open("conll_test_records_edited_3.txt",'r')
-fin = open("mudflat_testdata_Mk1.txt",'r')
-fout = open("test2_output.txt",'w')
-ka = 0
-line = fin.readline()  # read past initial sent-id
-idstrg = line[12:-1]
-thesent = ""
-line = fin.readline() 
-while len(line) > 0:  # loop through the file
-    if line.startswith("# sent_id"):
-#        print_info()
-        plovrec = utilities.get_plover_template(idstrg, datestrg, publicatnstrg, thesent)
-        if coder.do_coding(plist, plovrec):
-            utilities.write_record(plovrec,fout)
-        idstrg = line[12:-1]
-        thesent = ""
-        ka += 1
-        if ka > 4: break
-    elif line.startswith("# text"):
-        thesent += line[9:-1] + ' '
-    elif line.startswith("# source"):
-        publicatnstrg = line[11:-1]
-    elif line.startswith("# date"):
-        datestrg = line[9:-1]
-    elif line.startswith("1"):
-        plist = [line[:-1].split('\t')]
-        line = fin.readline() 
-        while len(line) > 1:
-            plist.append(line[:-1].split('\t'))
-            line = fin.readline() 
-    line = fin.readline() 
+reader.open_input(input_file_name)
+fout = open(output_file_name,'w')
+krec = 0
+ncoded = 0
+plist, plovrec = reader.read_conllu_record()
+while plist:  # loop through the file
+    if coder.do_coding(plist, plovrec):
+        utilities.write_record(plovrec,fout)
+        print(krec, plovrec["id"], plovrec["event"])
+        ncoded += 1
+    if maxrec > 0 and krec > maxrec: 
+        break
+    plist, plovrec = reader.read_conllu_record()
 
-fin.close()
+reader.close_input()
 fout.close()
+print("Events coded:", ncoded)
 print("Finished")

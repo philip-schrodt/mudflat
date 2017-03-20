@@ -31,17 +31,27 @@ import globals
 plist = [] # create a local for this
 
 
-def get_nsubj(subji):
-    subjstrg = subji[1]
-    for li in reversed(plist[:int(subji[0]) - 1]):
+def get_NP(sdex):
+    """ construct noun phrase based on word at sdex """
+    index = int(sdex) - 1
+    subjstrg = plist[index][1]
+    for li in reversed(plist[:index]):
 #        print(li)
-        if li[6] == subji[0]:
+        if li[6] == sdex and li[7] in ["compound", "amod"]:
             subjstrg = li[1] + ' ' + subjstrg
-    for li in plist[int(subji[0]):]:
+    for li in plist[index + 1:]:  # do we ever hit this?
 #        print(li)
-        if li[6] == subji[0]:
+        if li[6] == sdex and li[7] in ["compound", "amod"]:
             subjstrg = subjstrg + ' ' + li[1]
     return subjstrg       
+
+def get_conj(sdex):
+    """ check if there are compound elements: this can be reduced to a, well, reduce """
+    actlist = [sdex]
+    for li in plist:
+        if li[6] == sdex and li[7] == "conj":
+            actlist.append(li[0])
+    return actlist       
     
     
 def print_info():
@@ -64,57 +74,106 @@ def find_code(thetext):
     if thetext:
         thetext = thetext.upper()
         words = thetext.split(' ')
+        code = ""
         for wd in words:
 #            print("checking",wd)
             if wd in globals.ActorDict:
                 try:
                     code = globals.ActorDict[wd]['#'][0][0]
                 except:  # this is a bit messy and will be modified once I do more with the dictionary
-                    pass
+                    code = None
                 if code:
                     return code
         return None
     else:
         return None
     
-def code_actors():
-    srctext, srccode = "", ""
-    tartext, tarcode = "", ""
+def find_sec_code(thetext):
+    if thetext:
+        thetext = thetext.upper()
+        words = thetext.split(' ')
+        codestrg = ""
+        for wd in words:
+#            print("checking",wd)
+            if wd in globals.ActorDict:
+                try:
+                    code = globals.AgentDict[wd]['#']
+                except:  # this is a bit messy and will be modified once I do more with the dictionary
+                    code = None
+                if code:
+                    codestrg += code[1:]
+        return codestrg
+    else:
+        return None
+
+def code_events():
+    srctext, srccode, srcseccode, srclist = [], [], [], []
+    tartext, tarcode, tarseccode, tarlist = [], [], [], []
     roottext, rootcode = "", ""
 
     for li in plist:
-        if li[7] == "root":
-#            print("root:",li[1], "[" + li[0] + "]")
-            iroot = li[0]
-            if not roottext:
-                rootcode = li[1].upper()
-                roottext = li[1]
-        if "nsubj" in li[7]:
+        if "nsubj" == li[7]:
 #            print("nsubj:",li[1], "[" + li[0] + "] --> ", get_nsubj(li))
-            srctext = get_nsubj(li)
-        if li[7].startswith("ob"):
-            pass
-#            print("obj:",li[1], "(" + li[7] + ") [" + li[0] + "]")
-        if li[7].startswith("dobj"):
-#            print("dobj:",li[1], "(" + li[7] + ") [" + li[0] + "]")
-            tartext = li[1]
+            srclist = get_conj(li[0])
+#            srctext = get_NP(li[0])
+            iroot = int(li[6])
+            rootcode = plist[iroot - 1][2].upper()  # adjust for zero indexing
+            roottext = plist[iroot - 1][1]
+            tarlist = []
+            for lobj in plist:
+                if lobj[7] == "dobj" and lobj[6] == li[6]:
+#                    tartext = get_NP(lobj[0])
+                    tarlist = get_conj(lobj[0])
+            if tarlist:
+#                print(srclist, tarlist)
+                break
 
-    srccode = find_code(srctext)
-    tarcode = find_code(tartext)
+    for idx in srclist:
+        text = get_NP(idx)
+        code = find_code(text)
+        seccode = find_sec_code(text)
+        if code or seccode:
+            srctext.append(text)
+            srccode.append(code)
+            srcseccode.append(seccode)
+        
+    for idx in tarlist:
+        text = get_NP(idx)
+        code = find_code(text)
+        seccode = find_sec_code(text)
+        if code or seccode:
+            tarcode.append(code)
+            tartext.append(text)
+            tarseccode.append(seccode)
                     
-    if srccode and tarcode:
-        return [srccode, tarcode, rootcode], [srctext, tartext, roottext]
+    if (srccode or srcseccode) and (tarcode or tarseccode):
+        return [srccode, srcseccode, tarcode, tarseccode, rootcode], [srctext, tartext, roottext]
     else:
         return None, None
 
+
 def do_coding(parg, plovrec):
     global plist
+    
+    def make_actrec(code, sect, text):
+        """ create an actor record """
+        actrec = {"actorText" : text}
+        if code:
+            actrec["code"] = code
+        if sect:
+            actrec["sector"] = sect
+        return actrec
+
     plist = parg
-    codes, texts = code_actors()
+    codes, texts = code_events()
     if codes:
-        plovrec["source"] = [{"code" : codes[0], "actorText" : texts[0]}]
-        plovrec["target"] = [{"code" : codes[1], "actorText" : texts[1]}]
-        plovrec["event"] = codes[2]
+        plovrec["source"] = []
+        for ka in range(len(codes[0])):
+            plovrec["source"].append(make_actrec(codes[0][ka], codes[1][ka], texts[0][ka]))
+        plovrec["target"] = []
+        for ka in range(len(codes[2])):
+            plovrec["target"].append(make_actrec(codes[2][ka], codes[3][ka], texts[1][ka]))
+        plovrec["event"] = codes[4]
         plovrec["eventText"] = texts[2]
         plovrec["mode"] = "mode-holder"
         plovrec["context"] = "context-holder"

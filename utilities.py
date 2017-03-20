@@ -35,12 +35,13 @@
 
 # import globals
 
-import os
-import logging
-import dateutil.parser
 from collections import defaultdict, Counter
 from datetime import datetime
+import dateutil.parser
+import argparse
+import logging
 import json
+import os
 
 field_order = ["id", "date", "source","target", "event", "eventText", "mode", "context", "text", 
                "language", "publication", "coder", "version", "dateCoded", "comment"]
@@ -50,6 +51,85 @@ nulllist = []  # used when PETRglobals.NullVerbs == True
     Someone who can better grok recursion than I might also be able to eliminate the need for it."""
 
 
+def parse_cli_args():
+    """Function to parse the command-line arguments for mudflat. Adapted from PETRARCH-2, obviously"""
+    __description__ = """
+PETRARCH
+(https://openeventdata.github.io/) (v. 0.01)
+    """
+    aparse = argparse.ArgumentParser(prog='mudflat',
+                                     description=__description__)
+
+    aparse.add_argument('-i', '--input',
+                               help='File, or directory of files, to code.  Defaults to DEFAULT_INPUT_NAME',
+                               required=False)
+    aparse.add_argument('-o', '--output',
+                               help="""Filepath for the output file. Defaults to DEFAULT_OUTPUT_NAME""",
+                               required=False)
+
+    aparse.add_argument('-n', '--maxrecords',
+                               help="""Maximum number of input records to read""",
+                               required=False)
+
+    '''sub_parse = aparse.add_subparsers(dest='command_name')
+
+    parse_command = sub_parse.add_parser('parse', help=""" DEPRECATED Command to run the
+                                         PETRARCH parser. Do not use unless you've used it before. If you need to 
+                                         process unparsed text, see the README""",
+                                         description="""DEPRECATED Command to run the
+                                         PETRARCH parser. Do not use unless you've used it before.If you need to 
+                                         process unparsed text, see the README""")
+    parse_command.add_argument('-i', '--inputs',
+                               help='File, or directory of files, to parse.',
+                               required=True)
+    parse_command.add_argument('-P', '--parsed', action='store_true',
+                               default=False, help="""Whether the input
+                               document contains StanfordNLP-parsed text.""")
+    parse_command.add_argument('-o', '--output',
+                               help='File to write parsed events.',
+                               required=True)
+    parse_command.add_argument('-c', '--config',
+                               help="""Filepath for the PETRARCH configuration
+                               file. Defaults to PETR_config.ini""",
+                               required=False)
+    
+    
+    batch_command = sub_parse.add_parser('batch', help="""Command to run a batch
+                                         process from parsed files specified by
+                                         an optional config file.""",
+                                         description="""Command to run a batch
+                                         process from parsed files specified by
+                                         an optional config file.""")
+    batch_command.add_argument('-c', '--config',
+                               help="""Filepath for the PETRARCH configuration
+                               file. Defaults to PETR_config.ini""",
+                               required=False)
+                               
+    batch_command.add_argument('-i', '--inputs',
+                               help="""Filepath for the input XML file. Defaults to 
+                               data/text/Gigaword.sample.PETR.xml""",
+                               required=False)
+                               
+    batch_command.add_argument('-o', '--outputs',
+                               help="""Filepath for the input XML file. Defaults to 
+                               data/text/Gigaword.sample.PETR.xml""",
+                               required=False)
+
+    nulloptions = aparse.add_mutually_exclusive_group()
+
+    nulloptions.add_argument('-na', '--nullactors',
+                               help="""Find noun phrases which are associated with a verb generating  an event but are
+                                not in the dictionary; an integer giving the maximum number of words follows the command. 
+                                Does not generate events. """,
+                               required=False)
+
+    nulloptions.add_argument('-nv', '--nullverbs',
+                               help="""Find verb phrases which have source and  
+                               targets but are not in the dictionary. Does not generate events. """,
+                               required=False, action="store_true")'''
+    
+    args = aparse.parse_args()
+    return args
 
 
 def parse_to_text(parse):

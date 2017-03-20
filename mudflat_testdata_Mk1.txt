@@ -1,13 +1,13 @@
 # sent_id = 3f8d8514-7cbd-423a-9cc8-37d8881add93_4
 # source = mudflat test data
 # date = 2015-02-18
-# text = Since October 2015, Israeli occupation forces have killed at least 252 Palestinians. 
+# text = Since October 2015, Israeli military forces have killed at least 252 Palestinians. 
 1	Since	since	_	IN	_	2	case	_	_
 2	October	October	_	NNP	_	9	nmod	_	_
 3	2015	2015	_	CD	_	2	nummod	_	_
 4	,	,	_	,	_	9	punct	_	_
 5	Israeli	israeli	_	JJ	_	7	amod	_	_
-6	occupation	occupation	_	NN	_	7	compound	_	_
+6	military	military	_	NN	_	7	compound	_	_
 7	forces	force	_	NNS	_	9	nsubj	_	_
 8	have	have	_	VBP	_	9	aux	_	_
 9	killed	kill	_	VBN	_	0	root	_	_
@@ -281,4 +281,170 @@
 15	controlled	control	_	VBN	_	13	ccomp	_	_
 16	explosions	explosion	_	NNS	_	15	dobj	_	_
 17	.	.	_	.	_	5	punct	_	_
+
+# sent_id = 44c2478c-a854-4861-a4b2-b9bbfc45a2db_1
+# source = mudflat test data
+# date = 2015-07-11
+# text = ATHENS: Greece and its France resumed long-stalled talks in Athens Tuesday about reforms Greece needs to adopt to keep
+# text = bailout funds flowing and the crisis-hit nation financially afloat.
+1	ATHENS	ATHENS	_	NNP	_	0	root	_	_
+2	:	:	_	:	_	1	punct	_	_
+3	Greece	Greece	_	NNP	_	7	nsubj	_	_
+4	and	and	_	CC	_	3	cc	_	_
+5	its	its	_	PRP$	_	6	nmod:poss	_	_
+6	France	France	_	NNS	_	3	conj	_	_
+7	resumed	resume	_	VBD	_	1	dep	_	_
+8	long-stalled	long-stalled	_	JJ	_	9	amod	_	_
+9	talks	talk	_	NNS	_	7	dobj	_	_
+10	in	in	_	IN	_	11	case	_	_
+11	Athens	Athens	_	NNP	_	9	nmod	_	_
+12	Tuesday	Tuesday	_	NNP	_	7	nmod:tmod	_	_
+13	about	about	_	IN	_	16	mark	_	_
+14	reforms	reform	_	NNS	_	15	compound	_	_
+15	Greece	Greece	_	NNP	_	16	nsubj	_	_
+16	needs	need	_	VBZ	_	7	advcl	_	_
+17	to	to	_	TO	_	18	mark	_	_
+18	adopt	adopt	_	VB	_	16	xcomp	_	_
+19	to	to	_	TO	_	20	mark	_	_
+20	keep	keep	_	VB	_	18	xcomp	_	_
+21	bailout	bailout	_	NN	_	22	compound	_	_
+22	funds	fund	_	NNS	_	23	nsubj	_	_
+23	flowing	flow	_	VBG	_	20	ccomp	_	_
+24	and	and	_	CC	_	23	cc	_	_
+25	the	the	_	DT	_	27	det	_	_
+26	crisis-hit	crisis-hit	_	JJ	_	27	amod	_	_
+27	nation	nation	_	NN	_	29	nsubj	_	_
+28	financially	financially	_	RB	_	29	advmod	_	_
+29	afloat	afloat	_	RB	_	23	conj	_	_
+30	.	.	_	.	_	1	punct	_	_
+
+
+# sent_id = 43b0a07e-e518-44de-ad5e-cf8b6820c5cc_1
+# source = mudflat test data
+# date = 2015-02-12
+# text = MOSCOW: Russian Foreign Minister Sergei Lavrov and his Iranian counterpart Mohammad Javad Zarif discussed the Syria
+# text = crisis by phone Wednesday, the Russian Foreign Ministry said in a statement.
+1	MOSCOW	MOSCOW	_	NNP	_	0	root	_	_
+2	:	:	_	:	_	1	punct	_	_
+3	Russian	Russian	_	NNP	_	7	compound	_	_
+4	Foreign	Foreign	_	NNP	_	7	compound	_	_
+5	Minister	Minister	_	NNP	_	7	compound	_	_
+6	Sergei	Sergei	_	NNP	_	7	compound	_	_
+7	Lavrov	Lavrov	_	NNP	_	15	nsubj	_	_
+8	and	and	_	CC	_	7	cc	_	_
+9	his	he	_	PRP$	_	14	nmod:poss	_	_
+10	Iranian	iranian	_	JJ	_	14	amod	_	_
+11	counterpart	counterpart	_	NN	_	14	compound	_	_
+12	Mohammad	Mohammad	_	NNP	_	14	compound	_	_
+13	Javad	Javad	_	NNP	_	14	compound	_	_
+14	Zarif	Zarif	_	NNP	_	7	conj	_	_
+15	discussed	discuss	_	VBD	_	1	dep	_	_
+16	the	the	_	DT	_	18	det	_	_
+17	Syria	Syria	_	NNP	_	18	compound	_	_
+18	crisis	crisis	_	NN	_	15	dobj	_	_
+19	by	by	_	IN	_	20	case	_	_
+20	phone	phone	_	NN	_	15	nmod	_	_
+21	Wednesday	Wednesday	_	NNP	_	15	nmod:tmod	_	_
+22	,	,	_	,	_	15	punct	_	_
+23	the	the	_	DT	_	26	det	_	_
+24	Russian	Russian	_	NNP	_	26	compound	_	_
+25	Foreign	Foreign	_	NNP	_	26	compound	_	_
+26	Ministry	Ministry	_	NNP	_	27	nsubj	_	_
+27	said	say	_	VBD	_	15	parataxis	_	_
+28	in	in	_	IN	_	30	case	_	_
+29	a	a	_	DT	_	30	det	_	_
+30	statement	statement	_	NN	_	27	nmod	_	_
+31	.	.	_	.	_	1	punct	_	_
+
+# sent_id = 45aa6722-2a3d-4304-8716-ac762e571ea1_3
+# source = mudflat test data
+# date = 2015-12-21
+# text = Last month Russia and Turkish Foreign Minister Mevlut Cavusoglu both accused Iran of trying to destabilise Syria and
+# text = Iraq and of sectarianism, prompting Tehran to summon Ankara's ambassador.
+1	Last	last	_	JJ	_	2	amod	_	_
+2	month	month	_	NN	_	11	nmod:tmod	_	_
+3	Russia	Russia	_	NNP	_	9	conj	_	_
+4	and	and	_	CC	_	3	cc	_	_
+5	Turkish	turkish	_	JJ	_	9	compound	_	_
+6	Foreign	Foreign	_	NNP	_	9	compound	_	_
+7	Minister	Minister	_	NNP	_	9	compound	_	_
+8	Mevlut	Mevlut	_	NNP	_	9	compound	_	_
+9	Cavusoglu	Cavusoglu	_	NNP	_	11	nsubj	_	_
+10	both	both	_	CC	_	11	cc:preconj	_	_
+11	accused	accuse	_	VBD	_	0	root	_	_
+12	Iran	Iran	_	NNP	_	11	dobj	_	_
+13	of	of	_	IN	_	14	mark	_	_
+14	trying	try	_	VBG	_	11	advcl	_	_
+15	to	to	_	TO	_	16	mark	_	_
+16	destabilise	destabilise	_	VB	_	14	xcomp	_	_
+17	Syria	Syria	_	NNP	_	16	dobj	_	_
+18	and	and	_	CC	_	17	cc	_	_
+19	Iraq	Iraq	_	NNP	_	17	conj	_	_
+20	and	and	_	CC	_	16	cc	_	_
+21	of	of	_	IN	_	22	case	_	_
+22	sectarianism	sectarianism	_	NN	_	16	conj	_	_
+23	,	,	_	,	_	11	punct	_	_
+24	prompting	prompt	_	VBG	_	11	xcomp	_	_
+25	Tehran	Tehran	_	NNP	_	24	dobj	_	_
+26	to	to	_	TO	_	27	mark	_	_
+27	summon	summon	_	VB	_	24	xcomp	_	_
+28	Ankara	Ankara	_	NNP	_	30	nmod:poss	_	_
+29	's	's	_	POS	_	28	case	_	_
+30	ambassador	ambassador	_	NN	_	27	dobj	_	_
+31	.	.	_	.	_	11	punct	_	_
+
+# sent_id = 4b3d7ade-1b25-4e35-ad46-2ad3e8540dcc_5
+# source = mudflat test data
+# date = 2014-05-20
+# text = The American ambassador, Nikki R. Haley, who has called chemical weapons attacks in Syria âbarbaric,â accused Russia
+# text = and China of putting âtheir friends in the Assad regime ahead of our global securityâ in her blunt rebuke of the
+# text = vetoes.
+1	The	the	_	DT	_	3	det	_	_
+2	American	american	_	JJ	_	3	amod	_	_
+3	ambassador	ambassador	_	NN	_	21	nsubj	_	_
+4	,	,	_	,	_	3	punct	_	_
+5	Nikki	Nikki	_	NNP	_	7	compound	_	_
+6	R.	R.	_	NNP	_	7	compound	_	_
+7	Haley	Haley	_	NNP	_	3	appos	_	_
+8	,	,	_	,	_	3	punct	_	_
+9	who	who	_	WP	_	11	nsubj	_	_
+10	has	have	_	VBZ	_	11	aux	_	_
+11	called	call	_	VBN	_	3	acl:relcl	_	_
+12	chemical	chemical	_	NN	_	14	compound	_	_
+13	weapons	weapon	_	NNS	_	14	compound	_	_
+14	attacks	attack	_	NNS	_	11	dobj	_	_
+15	in	in	_	IN	_	16	case	_	_
+16	Syria	Syria	_	NNP	_	11	nmod	_	_
+17	``	``	_	``	_	11	punct	_	_
+18	barbaric	barbaric	_	JJ	_	11	xcomp	_	_
+19	,	,	_	,	_	3	punct	_	_
+20	''	''	_	''	_	3	punct	_	_
+21	accused	accuse	_	VBD	_	0	root	_	_
+22	Russia	Russia	_	NNP	_	21	dobj	_	_
+23	and	and	_	CC	_	22	cc	_	_
+24	China	China	_	NNP	_	22	conj	_	_
+25	of	of	_	IN	_	26	mark	_	_
+26	putting	put	_	VBG	_	21	advcl	_	_
+27	``	``	_	``	_	26	punct	_	_
+28	their	they	_	PRP$	_	29	nmod:poss	_	_
+29	friends	friend	_	NNS	_	26	dobj	_	_
+30	in	in	_	IN	_	33	case	_	_
+31	the	the	_	DT	_	33	det	_	_
+32	Assad	Assad	_	NNP	_	33	compound	_	_
+33	regime	regime	_	NN	_	26	nmod	_	_
+34	ahead	ahead	_	RB	_	26	advmod	_	_
+35	of	of	_	IN	_	38	case	_	_
+36	our	we	_	PRP$	_	38	nmod:poss	_	_
+37	global	global	_	JJ	_	38	amod	_	_
+38	security	security	_	NN	_	34	nmod	_	_
+39	''	''	_	''	_	34	punct	_	_
+40	in	in	_	IN	_	43	case	_	_
+41	her	she	_	PRP$	_	43	nmod:poss	_	_
+42	blunt	blunt	_	JJ	_	43	amod	_	_
+43	rebuke	rebuke	_	NN	_	34	nmod	_	_
+44	of	of	_	IN	_	46	case	_	_
+45	the	the	_	DT	_	46	det	_	_
+46	vetoes	veto	_	NNS	_	43	nmod	_	_
+47	.	.	_	.	_	21	punct	_	_
+
 
