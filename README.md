@@ -13,17 +13,21 @@ mudflat.py
 ----------
 Main driver program
 
-mf_globals.py
+globals.py
 -------------
 Globals, adapted from PETRARCH-2 (https://github.com/openeventdata/petrarch2)
 
-mf_reader.py
+reader.py
 ------------
 Configuration and dictionary input adapted from PETRARCH-2; CoNNL input
 
-write_PLOVER.py
+coder.py
 ---------------
-Routine for writing PLOVER records
+Coding routines
+
+utilities.py
+---------------
+Small utility routines, with parts adapted from PETRARCH-2
 
 extract_UD_parse.py
 -------------------
