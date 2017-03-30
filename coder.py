@@ -34,26 +34,16 @@ plist = [] # create a local for this
 def get_NP(sdex):
     """ construct noun phrase based on word at sdex """
     index = int(sdex) - 1
-    subjstrg = plist[index][1]
-    for li in reversed(plist[:index]):
-#        print(li)
-        if li[6] == sdex and li[7] in ["compound", "amod"]:
-            subjstrg = li[1] + ' ' + subjstrg
-    for li in plist[index + 1:]:  # do we ever hit this?
-#        print(li)
-        if li[6] == sdex and li[7] in ["compound", "amod"]:
-            subjstrg = subjstrg + ' ' + li[1]
-    return subjstrg       
+    return ' '.join(reversed(
+            [li[1] for li in reversed(plist[:index]) if li[6] == sdex and li[7] in ["compound", "amod"]]
+            )) + ' ' + plist[index][1] + ' ' + \
+            ' '.join([li[1] for li in plist[index + 1:] if li[6] == sdex and li[7] in ["compound", "amod"]])
 
+    
 def get_conj(sdex):
-    """ check if there are compound elements: this can be reduced to a, well, reduce """
-    actlist = [sdex]
-    for li in plist:
-        if li[6] == sdex and li[7] == "conj":
-            actlist.append(li[0])
-    return actlist       
-    
-    
+    """ check if there are compound elements """
+    return [sdex] + [li[0] for li in plist if li[6] == sdex and li[7] == "conj"]       
+
 def print_info():
     if not thesent:
         return
