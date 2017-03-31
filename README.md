@@ -29,6 +29,10 @@ utilities.py
 ---------------
 Small utility routines, with parts adapted from PETRARCH-2
 
+CAMEO2PLOVER.txt
+---------------
+PLOVER event-mode-context equivalents to CAMEO codes. Definitely a first approximation.
+
 extract_UD_parse.py
 -------------------
 Utility program for experimenting with CoNLL-U format routines
