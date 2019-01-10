@@ -12,13 +12,23 @@ line breaks for readability without the white-space brittleness of YAML. Example
 In Python this can be read with the relatively simple
 ```
 import json
-jstr = ""
-for line in open("newformat.test.txt", "r"):
-    if line.startswith("}"):
-        adict = json.loads(jstr + "}")  # adict now has the JSON record a dictionary
-        jstr = ""
-    else:
-        jstr += line[:-1].strip()
+JSONFILENAME = "newformat.test.txt"
+
+def read_json_file():
+# generator for reading readable JSON
+    jstr = ""
+    for line in open(JSONFILENAME, "r"):
+        if line.startswith("}"):
+            yield json.loads(jstr + "}")  # returns JSON record as a dictionary
+            jstr = ""
+        else:
+            if "\t" in line:
+                line = line.replace("\t", "\\t")  # similar code if anything else needs to be double-escaped
+            jstr += line[:-1].strip()
+
+reader = read_json_file()
+for jdict in reader:
+    # do stuff with jdict here...
 ```
 
 ## Legal stuff
